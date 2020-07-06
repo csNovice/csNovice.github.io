@@ -6,21 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hello World | Hexo</title>
+  <title>使用JPA中的@Query注解实现update功能 | Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="使用JPA中的@Query注解实现update功能在做项目中，遇到的用JPA更新数据库问题 用jpa中的save()方法，更新全部字段时会正常实现，可是在只更新部分字段时，会发现没有更新的字段被置为null。 可以通过使用@Query注解来解决。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2020/07/05/hello-world/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:title" content="使用JPA中的@Query注解实现update功能">
+<meta property="og:url" content="http://yoursite.com/2020/07/04/%E4%BD%BF%E7%94%A8JPA%E4%B8%AD%E7%9A%84@Query%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0update%E5%8A%9F%E8%83%BD/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="使用JPA中的@Query注解实现update功能在做项目中，遇到的用JPA更新数据库问题 用jpa中的save()方法，更新全部字段时会正常实现，可是在只更新部分字段时，会发现没有更新的字段被置为null。 可以通过使用@Query注解来解决。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-07-05T13:57:34.038Z">
-<meta property="article:modified_time" content="2020-07-05T13:57:34.038Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:published_time" content="2020-07-03T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-07-06T13:17:53.956Z">
+<meta property="article:author" content="yz_l">
+<meta property="article:tag" content="Study">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Blog" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -47,11 +48,13 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="" class="js-avatar">
+			<img src="/images/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">John Doe</a></h1>
+		  <h1 class="header-author"><a href="/">yz_l</a></h1>
 		</hgroup>
+		
+		<p class="header-subtitle">csNovice的学习记录</p>
 		
 
 		<nav class="header-menu">
@@ -81,7 +84,7 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="https://github.com/csNovice?tab=repositories" title="github"><i class="icon-github"></i></a>
 		        
 					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
 		        
@@ -105,11 +108,13 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="" class="js-avatar">
+				<img src="/images/avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">John Doe</h1>
+			  <h1 class="header-author js-header-author">yz_l</h1>
 			</hgroup>
+			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>csNovice的学习记录<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -122,7 +127,7 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="https://github.com/csNovice?tab=repositories" title="github"><i class="icon-github"></i></a>
 			        
 						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
 			        
@@ -154,39 +159,44 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-使用JPA中的@Query注解实现update功能" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      使用JPA中的@Query注解实现update功能
     </h1>
   
 
         
-        <a href="/2020/07/05/hello-world/" class="archive-article-date">
-  	<time datetime="2020-07-05T13:57:34.038Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-05</time>
+        <a href="/2020/07/04/%E4%BD%BF%E7%94%A8JPA%E4%B8%AD%E7%9A%84@Query%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0update%E5%8A%9F%E8%83%BD/" class="archive-article-date">
+  	<time datetime="2020-07-03T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h3 id="使用JPA中的-Query注解实现update功能"><a href="#使用JPA中的-Query注解实现update功能" class="headerlink" title="使用JPA中的@Query注解实现update功能"></a>使用JPA中的@Query注解实现update功能</h3><p>在做项目中，遇到的用JPA更新数据库问题</p>
+<p>用jpa中的save()方法，更新全部字段时会正常实现，可是在只更新部分字段时，会发现没有更新的字段被置为null。</p>
+<p>可以通过使用@Query注解来解决。</p>
+<a id="more"></a>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h4 id="HQL语句"><a href="#HQL语句" class="headerlink" title="HQL语句"></a>HQL语句</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.data.jpa.repository.Modifying;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.jpa.repository.Query;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.repository.query.Param;</span><br><span class="line"><span class="keyword">import</span> org.springframework.transaction.annotation.Transactional;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Modifying</span></span><br><span class="line">    <span class="meta">@Transactional</span></span><br><span class="line">    <span class="meta">@Query</span>(value = <span class="string">"update MedicalSteelPlate msp set msp.shelfNumber= :shelfNumber, msp.type= :type where msp.id= :id"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">updateEdit</span><span class="params">(@Param(<span class="string">"id"</span>)</span> Integer id, @<span class="title">Param</span><span class="params">(<span class="string">"shelfNumber"</span>)</span> String shelfNumber, @<span class="title">Param</span><span class="params">(<span class="string">"type"</span>)</span> String type)</span>;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>Data的特有实现。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96;@Modifying&#96;&#96;&#96; 注解代表允许修改，在@Query注解中实现DELETE和UPDATE操作的时候必须加上该注解，以通知Spring Data 这是一个DELETE或UPDATE操作。</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;@Transactional&#96;&#96;&#96; 注解用于提交事务　　</span><br><span class="line"></span><br><span class="line">#### 原生SQL语句</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;java</span><br><span class="line">	@Modifying</span><br><span class="line">    @Transactional</span><br><span class="line">    @Query(value &#x3D; &quot;update tb_medicalsteelplate msp set msp.shelf_number&#x3D;?2, msp.type&#x3D;?3 where msp.id&#x3D;?1&quot;, nativeQuery &#x3D; true)</span><br><span class="line">    void updateEdit(Integer id, String shelfNumber, String type);</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">若没有&#96;&#96;&#96;nativeQuery &#x3D; true&#96;&#96;&#96;，select * from xxx 中的xxx就不是数据库中对应的真正的表名而是对应的实体名。</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;java</span><br><span class="line">@Entity</span><br><span class="line">@Table(name &#x3D; &quot;tb_medicalsteelplate&quot;)</span><br><span class="line">public class MedicalSteelPlate </span><br><span class="line">&#x2F;&#x2F;MedicalSteelPlate 为实体名，真正的数据库表名为tb_medicalsteelplate</span><br></pre></td></tr></table></figure>
+
+<p>即可以修改为</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Modifying</span></span><br><span class="line"><span class="meta">@Transactional</span>	</span><br><span class="line"><span class="meta">@Query</span>(value = <span class="string">"update MedicalSteelPlate msp set msp.shelfNumber=?2, msp.type=?3 where msp.id=?1"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">void</span> <span class="title">updateEdit</span><span class="params">(Integer id, String shelfNumber, String type)</span></span>;</span><br></pre></td></tr></table></figure>
+
+
+
 
       
 
@@ -266,7 +276,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/05/hello-world/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/04/%E4%BD%BF%E7%94%A8JPA%E4%B8%AD%E7%9A%84@Query%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0update%E5%8A%9F%E8%83%BD/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -280,11 +290,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/07/05/%E6%88%91%E7%9A%84%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/07/05/Git/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          我的测试文章
+          Git
         
       </div>
     </a>
@@ -329,7 +339,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020 John Doe
+    		&copy; 2020 yz_l
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

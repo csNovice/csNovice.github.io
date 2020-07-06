@@ -6,17 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hexo</title>
+  <title>Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+  <meta name="description" content="学习日记">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blog">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="学习日记">
 <meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="yz_l">
+<meta property="article:tag" content="Study">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Blog" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -43,11 +46,13 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="" class="js-avatar">
+			<img src="/images/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">John Doe</a></h1>
+		  <h1 class="header-author"><a href="/">yz_l</a></h1>
 		</hgroup>
+		
+		<p class="header-subtitle">csNovice的学习记录</p>
 		
 
 		<nav class="header-menu">
@@ -77,7 +82,7 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="https://github.com/csNovice?tab=repositories" title="github"><i class="icon-github"></i></a>
 		        
 					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
 		        
@@ -101,11 +106,13 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="" class="js-avatar">
+				<img src="/images/avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">John Doe</h1>
+			  <h1 class="header-author js-header-author">yz_l</h1>
 			</hgroup>
+			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>csNovice的学习记录<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -118,7 +125,7 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="https://github.com/csNovice?tab=repositories" title="github"><i class="icon-github"></i></a>
 			        
 						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
 			        
@@ -152,40 +159,30 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-使用JPA中的@Query注解实现update功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Hexo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/05/%E4%BD%BF%E7%94%A8JPA%E4%B8%AD%E7%9A%84@Query%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0update%E5%8A%9F%E8%83%BD/">使用JPA中的@Query注解实现update功能</a>
+      <a class="article-title" href="/2020/07/06/Hexo/">Hexo</a>
     </h1>
   
 
         
-        <a href="/2020/07/05/%E4%BD%BF%E7%94%A8JPA%E4%B8%AD%E7%9A%84@Query%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0update%E5%8A%9F%E8%83%BD/" class="archive-article-date">
-  	<time datetime="2020-07-05T14:23:43.855Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-05</time>
+        <a href="/2020/07/06/Hexo/" class="archive-article-date">
+  	<time datetime="2020-07-06T10:04:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="使用JPA中的-Query注解实现update功能"><a href="#使用JPA中的-Query注解实现update功能" class="headerlink" title="使用JPA中的@Query注解实现update功能"></a>使用JPA中的@Query注解实现update功能</h3><h4 id="HQL语句"><a href="#HQL语句" class="headerlink" title="HQL语句"></a>HQL语句</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.data.jpa.repository.Modifying;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.jpa.repository.Query;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.repository.query.Param;</span><br><span class="line"><span class="keyword">import</span> org.springframework.transaction.annotation.Transactional;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Modifying</span></span><br><span class="line">    <span class="meta">@Transactional</span></span><br><span class="line">    <span class="meta">@Query</span>(value = <span class="string">"update MedicalSteelPlate msp set msp.shelfNumber= :shelfNumber, msp.type= :type where msp.id= :id"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">updateEdit</span><span class="params">(@Param(<span class="string">"id"</span>)</span> Integer id, @<span class="title">Param</span><span class="params">(<span class="string">"shelfNumber"</span>)</span> String shelfNumber, @<span class="title">Param</span><span class="params">(<span class="string">"type"</span>)</span> String type)</span>;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><figcaption><span>Data的特有实现。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96;@Modifying&#96;&#96;&#96; 注解代表允许修改，在@Query注解中实现DELETE和UPDATE操作的时候必须加上该注解，以通知Spring Data 这是一个DELETE或UPDATE操作。</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;@Transactional&#96;&#96;&#96; 注解用于提交事务　　</span><br><span class="line"></span><br><span class="line">#### 原生SQL语句</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;java</span><br><span class="line">	@Modifying</span><br><span class="line">    @Transactional</span><br><span class="line">    @Query(value &#x3D; &quot;update tb_medicalsteelplate msp set msp.shelf_number&#x3D;?2, msp.type&#x3D;?3 where msp.id&#x3D;?1&quot;, nativeQuery &#x3D; true)</span><br><span class="line">    void updateEdit(Integer id, String shelfNumber, String type);</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">若没有&#96;&#96;&#96;nativeQuery &#x3D; true&#96;&#96;&#96;，select * from xxx 中的xxx就不是数据库中对应的真正的表名而是对应的实体名。</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;java</span><br><span class="line">@Entity</span><br><span class="line">@Table(name &#x3D; &quot;tb_medicalsteelplate&quot;)</span><br><span class="line">public class MedicalSteelPlate </span><br><span class="line">&#x2F;&#x2F;MedicalSteelPlate 为实体名，真正的数据库表名为tb_medicalsteelplate</span><br></pre></td></tr></table></figure>
-
-<p>即可以修改为</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Modifying</span></span><br><span class="line"><span class="meta">@Transactional</span>	</span><br><span class="line"><span class="meta">@Query</span>(value = <span class="string">"update MedicalSteelPlate msp set msp.shelfNumber=?2, msp.type=?3 where msp.id=?1"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">void</span> <span class="title">updateEdit</span><span class="params">(Integer id, String shelfNumber, String type)</span></span>;</span><br></pre></td></tr></table></figure>
-
-
-
-
+        <p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+        
+          <a class="article-more-a" href="/2020/07/06/Hexo/#more">more >></a>
+        
       
 
       
@@ -197,7 +194,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/05/%E4%BD%BF%E7%94%A8JPA%E4%B8%AD%E7%9A%84@Query%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0update%E5%8A%9F%E8%83%BD/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/07/06/Hexo/">展开全文 >></a>
         </p>
       
 
@@ -240,91 +237,17 @@
 
         
         <a href="/2020/07/05/Git/" class="archive-article-date">
-  	<time datetime="2020-07-05T14:23:43.853Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-05</time>
+  	<time datetime="2020-07-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h5 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h5><p>初始化一个Git仓库，使用<code>git init</code>命令。</p>
-<p>添加文件到Git仓库，分两步：</p>
-<ol>
-<li>使用命令<code>git add &lt;file&gt;</code>，注意，可反复多次使用，添加多个文件；</li>
-<li>使用命令<code>git commit -m &lt;message&gt;</code>，完成。</li>
-</ol>
-<h5 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h5><p>3个概念，工作区（<strong>Working Directory</strong>），暂存区（<strong>index /stage</strong>），本地仓库（<strong>Repository</strong>）</p>
-<ul>
-<li>要随时掌握工作区的状态，使用<code>git status</code>命令。</li>
-<li>如果<code>git status</code>告诉你有文件被修改过，用<code>git diff</code>可以查看修改内容。</li>
-</ul>
-<ol>
-<li><code>git diff</code>：是查看工作区与暂存区的差别的。</li>
-<li><code>git diff -- cached</code>：是查看暂存区与仓库的差别的。</li>
-<li><code>git diff HEAD</code>：是查看工作区和仓库的差别的。其中：HEAD代表的是最近的一次commit的信息。</li>
-</ol>
-<ul>
-<li><p><code>HEAD</code>指向的版本就是当前版本，上一个版本就是<code>HEAD^</code>，上上一个版本就是<code>HEAD^^</code>，当然往上100个版本写100个<code>^</code>比较容易数不过来，所以写成<code>HEAD~100</code>。</p>
-<p>因此，Git允许我们在版本的历史之间穿梭，使用命令<code>git reset --hard commit_id</code>。</p>
-</li>
-<li><p>用<code>git log</code>可以查看提交历史，以便确定要回退到哪个版本。</p>
-<p>如果嫌输出信息太多，可以加上<code>--pretty=oneline</code>参数： <code>git log --pretty=oneline</code></p>
-</li>
-<li><p>用<code>git reflog</code>查看命令历史，以便确定要回到未来的哪个版本。</p>
-</li>
-</ul>
-<h5 id="管理修改"><a href="#管理修改" class="headerlink" title="管理修改"></a>管理修改</h5><p>前面讲了我们把文件往Git版本库里添加的时候，是分两步执行的：</p>
-<p>第一步是用<code>git add</code>把文件添加进去，实际上就是把文件修改添加到暂存区；</p>
-<p>第二步是用<code>git commit</code>提交更改，实际上就是把暂存区的所有内容提交到当前分支。</p>
-<p>因为我们创建Git版本库时，Git自动为我们创建了唯一一个<code>master</code>分支，所以，现在，<code>git commit</code>就是往<code>master</code>分支上提交更改。</p>
-<p>你可以简单理解为，需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。</p>
-<p><code>git add</code>命令实际上就是把要提交的所有修改放到暂存区（Stage），然后，执行<code>git commit</code>就可以一次性把暂存区的所有修改提交到分支。</p>
-<p>用<code>git diff HEAD -- &lt;file&gt;</code>命令可以查看工作区和版本库里面最新版本的区别</p>
-<h5 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h5><p><code>git checkout -- file</code>可以丢弃工作区的修改</p>
-<p>命令<code>git checkout -- readme.txt</code>意思就是，把<code>readme.txt</code>文件在工作区的修改全部撤销，这里有两种情况：</p>
-<p>一种是<code>readme.txt</code>自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；</p>
-<p>一种是<code>readme.txt</code>已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。</p>
-<p>总之，就是让这个文件回到最近一次<code>git commit</code>或<code>git add</code>时的状态。</p>
-<p>用命令<code>git reset HEAD &lt;file&gt;</code>可以把暂存区的修改撤销掉（unstage），重新放回工作区。</p>
-<p><code>git reset</code>命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用<code>HEAD</code>时，表示最新的版本。</p>
-<p>小结：</p>
-<p>​        场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令<code>git checkout -- file</code>。</p>
-<p>​        场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令<code>git reset HEAD &lt;file&gt;</code>，就回到了场景1，第二步按场景1操作。</p>
-<p>​        场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，可以进行版本回退，不过前提是没有推送到远程库。</p>
-<h5 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h5><p>在文件管理器中把文件删了，或者用<code>rm</code>命令删了</p>
-<p>现在你有两个选择:</p>
-<p>​        一是确实要从版本库中删除该文件，那就用命令<code>git rm</code>删掉，并且<code>git commit</code>,文件就从版本库中被删除了。</p>
-<p> <strong>小提示：先手动删除文件，然后使用<code>git rm &lt;file&gt;</code>和<code>git add &lt;file&gt;</code>效果是一样的。</strong></p>
-<p>​        另一种情况是删错了，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版本：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git checkout -- test.txt</span></span><br></pre></td></tr></table></figure>
-
-<p><code>git checkout</code>其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。</p>
-<p> <strong>注意：从来没有被添加到版本库就被删除的文件，是无法恢复的！</strong></p>
-<h5 id="创建和合并分支"><a href="#创建和合并分支" class="headerlink" title="创建和合并分支"></a>创建和合并分支</h5><p>Git鼓励大量使用分支：</p>
-<p>1、查看分支：<code>git branch</code></p>
-<p>2、创建分支：<code>git branch &lt;name&gt;</code></p>
-<p>3、切换分支：<code>git checkout &lt;name&gt;</code>或者<code>git switch &lt;name&gt;</code></p>
-<p>​        <strong>注意到切换分支使用<code>git checkout &lt;branch&gt;</code>，而前面讲过的撤销修改则是</strong></p>
-<p><strong><code>git checkout -- &lt;file&gt;</code>，同一个命令，有两种作用，确实有点令人迷惑。</strong></p>
-<p>​        <strong>实际上，切换分支这个动作，用<code>switch</code>更科学。</strong></p>
-<p>4、创建+切换分支：<code>git checkout -b &lt;name&gt;</code>或者<code>git switch -c &lt;name&gt;</code></p>
-<p><code>git checkout</code>命令加上<code>-b</code>参数表示创建并切换，相当于以下两条命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git branch dev</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git checkout dev</span></span><br></pre></td></tr></table></figure>
-
-<p>5、合并某分支到当前分支：<code>git merge &lt;name&gt;</code></p>
-<p>6、删除分支：<code>git branch -d &lt;name&gt;</code></p>
-<h5 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h5><p>人生不如意之事十之八九，合并分支往往也不是一帆风顺的。</p>
-<p>当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。</p>
-<p>解决冲突就是把Git合并失败的文件手动编辑为我们希望的内容，再提交。</p>
-<p>用<code>git log --graph</code>命令可以看到分支合并图。</p>
-<h5 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h5><p>用<code>git remote -v</code>查看远程库信息</p>
-<p>删除已有的GitHub远程库：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote rm origin</span><br></pre></td></tr></table></figure>
-
-<p>一个本地库能不能既关联GitHub，又关联Gitee呢？</p>
-<p>答案是肯定的，因为git本身是分布式版本控制系统，可以同步到另外一个远程库，当然也可以同步到另外两个远程库。</p>
-<p>使用多个远程库时，我们要注意，git给远程库起的默认名称是<code>origin</code>，如果有多个远程库，我们需要用不同的名称来标识不同的远程库。</p>
-
+        <p>Git学习笔记：<a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">廖雪峰的官方网站</a></p>
+        
+          <a class="article-more-a" href="/2020/07/05/Git/#more">more >></a>
+        
       
 
       
@@ -366,28 +289,32 @@
 
 
   
-    <article id="post-我的测试文章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-使用JPA中的@Query注解实现update功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/05/%E6%88%91%E7%9A%84%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/">我的测试文章</a>
+      <a class="article-title" href="/2020/07/04/%E4%BD%BF%E7%94%A8JPA%E4%B8%AD%E7%9A%84@Query%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0update%E5%8A%9F%E8%83%BD/">使用JPA中的@Query注解实现update功能</a>
     </h1>
   
 
         
-        <a href="/2020/07/05/%E6%88%91%E7%9A%84%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/" class="archive-article-date">
-  	<time datetime="2020-07-05T14:02:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-05</time>
+        <a href="/2020/07/04/%E4%BD%BF%E7%94%A8JPA%E4%B8%AD%E7%9A%84@Query%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0update%E5%8A%9F%E8%83%BD/" class="archive-article-date">
+  	<time datetime="2020-07-03T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><h2 id="内容-1"><a href="#内容-1" class="headerlink" title="内容"></a>内容</h2><h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="http://www.codesheep.cn" target="_blank" rel="noopener">www.codesheep.cn</a></p>
-
+        <h3 id="使用JPA中的-Query注解实现update功能"><a href="#使用JPA中的-Query注解实现update功能" class="headerlink" title="使用JPA中的@Query注解实现update功能"></a>使用JPA中的@Query注解实现update功能</h3><p>在做项目中，遇到的用JPA更新数据库问题</p>
+<p>用jpa中的save()方法，更新全部字段时会正常实现，可是在只更新部分字段时，会发现没有更新的字段被置为null。</p>
+<p>可以通过使用@Query注解来解决。</p>
+        
+          <a class="article-more-a" href="/2020/07/04/%E4%BD%BF%E7%94%A8JPA%E4%B8%AD%E7%9A%84@Query%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0update%E5%8A%9F%E8%83%BD/#more">more >></a>
+        
       
 
       
@@ -399,82 +326,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/05/%E6%88%91%E7%9A%84%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/05/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/05/hello-world/" class="archive-article-date">
-  	<time datetime="2020-07-05T13:57:34.038Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/05/hello-world/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/07/04/%E4%BD%BF%E7%94%A8JPA%E4%B8%AD%E7%9A%84@Query%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0update%E5%8A%9F%E8%83%BD/">展开全文 >></a>
         </p>
       
 
@@ -514,7 +366,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020 John Doe
+    		&copy; 2020 yz_l
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
