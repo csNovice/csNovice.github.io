@@ -116,10 +116,10 @@ if (autoChangeMode === '1') {
 <p>生成build，dist目录，进入./dist/fun1目录后，运行fun1.exe</p>
 <p>出现如下</p>
 <p>FileNotFoundError：’Counld not find module：caffe2_detectron_ops.dll‘：</p>
-<p><img src= "/img/loading.gif" data-src="/images/hexo_post_1.png" alt></p>
+<p><img src= "/img/loading.gif" data-src="/images/hexo_post_1.png" alt=""></p>
 <p>可以使用<code>pyi-bindepend</code>查看caffe2_detectron_ops.dll的依赖</p>
 <p>由于我没有配置环境变量，我直接知道pyi-bindepend.exe所在的文件，在此目录直接运行 </p>
-<p><img src= "/img/loading.gif" data-src="/images/hexo_post_2.png" alt></p>
+<p><img src= "/img/loading.gif" data-src="/images/hexo_post_2.png" alt=""></p>
 <p>逐个依赖查看，发现缺少<code>libiomp5md.dll</code></p>
 <p><strong>解决方法：</strong></p>
 <p>将<code>libiomp5md.dll</code>复制到./dist/fun1目录即可解决。</p>
@@ -127,7 +127,7 @@ if (autoChangeMode === '1') {
 <p>注意：只有Python3.8版本，打包才出现，我用Python3.7没出现这个问题。</p>
 </blockquote>
 <p>2、将缺少的包导入后，可以运行exe，但是当点击人脸识别后，报错：</p>
-<p><img src= "/img/loading.gif" data-src="/images/hexo_post_3.png" alt></p>
+<p><img src= "/img/loading.gif" data-src="/images/hexo_post_3.png" alt=""></p>
 <p><strong>解决方法：</strong></p>
 <p>更换pytorch和torchvision的版本</p>
 <p>最终更换为</p>
@@ -138,7 +138,7 @@ if (autoChangeMode === '1') {
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">conda install --offline -n envs_name xxx.tar.bz2</span><br><span class="line"></span><br><span class="line">envs_name:环境名</span><br><span class="line">xxx.tar.bz2:下载的包</span><br></pre></td></tr></table></figure>
 
 <p>3、更换pytorch和torchvision版本后，报错：</p>
-<p><img src= "/img/loading.gif" data-src="/images/hexo_post_4.png" alt></p>
+<p><img src= "/img/loading.gif" data-src="/images/hexo_post_4.png" alt=""></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ModuleNotFoundError: No module named <span class="string">'numpy.random.common'</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>解决方法：</strong></p>
@@ -146,7 +146,7 @@ if (autoChangeMode === '1') {
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hiddenimports=[<span class="string">'numpy.random.common'</span>,<span class="string">'numpy.random.bounded_integers'</span>,<span class="string">'numpy.random.entropy'</span>]</span><br></pre></td></tr></table></figure>
 
 <p>4、点击采集人像后，出现错误</p>
-<p><img src= "/img/loading.gif" data-src="/images/hexo_post_5.png" alt></p>
+<p><img src= "/img/loading.gif" data-src="/images/hexo_post_5.png" alt=""></p>
 <p>numpy版本降低为1.17.0后，出现这个read-only错误。</p>
 <p>一般是你读取的图片的时候，默认选择的是”r”,”rb”模式有关。</p>
 <p>原本代码为：</p>
@@ -161,7 +161,7 @@ if (autoChangeMode === '1') {
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">img1 = np.asarray(img)</span><br><span class="line">img1 = np.require(img, dtype=<span class="string">'f4'</span>, requirements=[<span class="string">'O'</span>, <span class="string">'W'</span>])</span><br><span class="line">qimg = qimage2ndarray.array2qimage(img1)</span><br></pre></td></tr></table></figure>
 
 <p>5、在其他人电脑上运行出错</p>
-<p><img src= "/img/loading.gif" data-src="/images/hexo_post_6.png" alt></p>
+<p><img src= "/img/loading.gif" data-src="/images/hexo_post_6.png" alt=""></p>
 <p>解决方法：</p>
 <p>出现此错误的原因是缺少了ssl证书，因此可以从<a href="https://www.python.org/" target="_blank" rel="noopener">Python官网</a>上下载相应python版本的压缩包，解压后将解压包中的_ssl.pyd复制到Anaconda/envs目录下相应的环境中的DLLs下覆盖原文件，</p>
 <p>将解压包中的libcrypto-1_1.dll、libssl-1_1.dll复制到Anaconda/envs目录下相应的环境的根目录即可解决问题。</p>
