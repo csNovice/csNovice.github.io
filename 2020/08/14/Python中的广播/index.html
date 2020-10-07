@@ -1,0 +1,173 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Python中的广播 | Blog</title><meta name="description" content="广播是一种手段，可以让你的python代码段执行得更快。  1  将一个4 x 1向量和一个数字相加，Python会自动将这个数字展开变成一个1 x 4向量  \left[ \begin{matrix} 1 \\ 2 \\ 3 \\ 4 \end{matrix} \right] + 100 &#x3D;  \left[ \begin{matrix} 1 \\ 2 \\ 3 \\ 4 \end{matrix}"><meta name="keywords" content="吴恩达-深度学习笔记"><meta name="author" content="yz_l"><meta name="copyright" content="yz_l"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://yoursite.com/2020/08/14/Python%E4%B8%AD%E7%9A%84%E5%B9%BF%E6%92%AD/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="Python中的广播"><meta property="og:url" content="http://yoursite.com/2020/08/14/Python%E4%B8%AD%E7%9A%84%E5%B9%BF%E6%92%AD/"><meta property="og:site_name" content="Blog"><meta property="og:description" content="广播是一种手段，可以让你的python代码段执行得更快。  1  将一个4 x 1向量和一个数字相加，Python会自动将这个数字展开变成一个1 x 4向量  \left[ \begin{matrix} 1 \\ 2 \\ 3 \\ 4 \end{matrix} \right] + 100 &#x3D;  \left[ \begin{matrix} 1 \\ 2 \\ 3 \\ 4 \end{matrix}"><meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><meta property="article:published_time" content="2020-08-14T14:18:50.000Z"><meta property="article:modified_time" content="2020-08-24T03:29:55.615Z"><meta name="twitter:card" content="summary"><script><!-- hexo-inject:begin --><!-- hexo-inject:end -->var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="prev" title="神经网络编程基础(Basics of Neural Network programming)" href="http://yoursite.com/2020/08/23/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/"><link rel="next" title="PyInstaller打包python程序遇到的问题" href="http://yoursite.com/2020/07/22/PyInstaller%E6%89%93%E5%8C%85python%E7%A8%8B%E5%BA%8F%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  bookmark: {
+    message_prev: 'Press',
+    message_next: 'to bookmark this page'
+  },
+  runtime_unit: 'days',
+  runtime: false,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: false
+  }</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 5.0.2"><link rel="alternate" href="/atom.xml" title="Blog" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">Articles</div><div class="length_num">10</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">Tags</div><div class="length_num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">Blog</a></span><span class="pull-right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">Python中的广播</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="Created 2020-08-14 22:18:50"><i class="far fa-calendar-alt fa-fw"></i> Created 2020-08-14</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="Updated 2020-08-24 11:29:55"><i class="fas fa-history fa-fw"></i> Updated 2020-08-24</span></time></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta__icon"></i><span>Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><p>广播是一种手段，可以让你的python代码段执行得更快。</p>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><blockquote>
+<p>1</p>
+</blockquote>
+<p>将一个4 x 1向量和一个数字相加，Python会自动将这个数字展开变成一个1 x 4向量</p>
+<script type="math/tex; mode=display">
+\left[ \begin{matrix} 1 \\ 2 \\ 3 \\ 4 \end{matrix} \right] + 100 = 
+\left[ \begin{matrix} 1 \\ 2 \\ 3 \\ 4 \end{matrix} \right] + \left[ \begin{matrix} 100 \\ 100 \\ 100 \\ 100 \end{matrix} \right] = 
+\left[ \begin{matrix} 101 \\ 102 \\ 103 \\ 104 \end{matrix} \right]</script><p>这种广播，对列向量和行向量一样</p>
+<blockquote>
+<p>2</p>
+</blockquote>
+<p>将一个2 x 3矩阵加上一个1 x 3矩阵，Python会把第二个矩阵复制两次，变成2 x 3矩阵，然后让它们相加</p>
+<p>一般情况下，将m x n矩阵加上1 x n矩阵，Python会复制1 x n矩阵m次，把它变成m x n矩阵，然后让它们相加</p>
+<script type="math/tex; mode=display">
+\left[ \begin{matrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{matrix} \right] + \left[ \begin{matrix} 100 & 200 & 300 \end{matrix} \right] = 
+\left[ \begin{matrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{matrix} \right] + \left[ \begin{matrix} 100 & 200 & 300 \\100 & 200 & 300 \end{matrix} \right] = 
+\left[ \begin{matrix} 101 & 201 & 303 \\ 104 & 205 & 306 \end{matrix} \right]</script><blockquote>
+<p>3</p>
+</blockquote>
+<p>将2 x 3矩阵加上2 x 1矩阵,Python会水平复制3次，把它变成2 x 3矩阵，然后让它们相加</p>
+<p>一般情况下，将m x n矩阵加上m x 1矩阵,Python会水平复制n次，把它变成m x n矩阵，然后让它们相加</p>
+<script type="math/tex; mode=display">
+\left[ \begin{matrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{matrix} \right] + \left[ \begin{matrix} 100 \\ 200  \end{matrix} \right] = 
+\left[ \begin{matrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{matrix} \right] + \left[ \begin{matrix} 100 & 100 & 100 \\200 & 200 & 200 \end{matrix} \right] = 
+\left[ \begin{matrix} 101 & 102 & 103 \\ 204 & 205 & 206 \end{matrix} \right]</script><blockquote>
+<p>通用规则</p>
+</blockquote>
+<p>将 m x n矩阵 +，-，*，/ 一个1 x n矩阵，Python会把它复制m次变成m x  n矩阵，然后逐个元素做加法，减法，乘法，除法</p>
+<p>将 m x n矩阵 +，-，*，/ 一个m x 1矩阵，Python会把它复制n次变成m x  n矩阵，然后逐个元素做加法，减法，乘法，除法</p>
+<p>将m x 1矩阵其实是一个列向量 + ，-，*，/ 一个实数，Python会把这个实数复制m次变成m x 1矩阵，然后逐个元素做加法，减法，乘法，除法</p>
+<p>类似的也适用于行向量</p>
+<blockquote>
+<p>实例</p>
+<p>下面列表是不同食物（每100g）中不同营养成分的卡路里含量表格，表格为3行4列，列表示不同的食物种类，从左至右依次为苹果，牛肉，鸡蛋，土豆。行表示不同的营养成分，从上到下依次为碳水化合物，蛋白质，脂肪。那么，我们现在想要计算不同食物中不同营养成分中的卡路里百分比。</p>
+<p><img src= "/img/loading.gif" data-src="/images/20190802133230188.png" alt=""></p>
+<p>现在计算苹果中的碳水化合物卡路里百分比含量，首先计算苹果（100g）中三种营养成分卡路里总和 56+1.2+1.8=59，然后用56/59=94.9%算出结果。</p>
+<p>对于其他食物，计算方法类似。首先，按列求和，计算每种食物中（100g）三种营养成分总和，然后分别用不用营养成分的卡路里数量除以总和，计算百分比。</p>
+</blockquote>
+<p>定义A是一个3 x 4的矩阵。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">A = np.array([[<span class="number">56.0</span>, <span class="number">0.0</span>, <span class="number">4.4</span>, <span class="number">68.0</span>],</span><br><span class="line">              [<span class="number">1.2</span>, <span class="number">104.0</span>, <span class="number">52.0</span>, <span class="number">8.0</span>],</span><br><span class="line">              [<span class="number">1.8</span>, <span class="number">135.0</span>, <span class="number">99.0</span>, <span class="number">0.9</span>]])</span><br><span class="line">print(A)</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">[[  56.     0.     4.4   68. ]</span></span><br><span class="line"><span class="string"> [   1.2  104.    52.     8. ]</span></span><br><span class="line"><span class="string"> [   1.8  135.    99.     0.9]]</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>那么，能否不使用for循环完成这样的一个计算过程？我们可以使用python的numpy库完成这样的计算过程，分两步:</p>
+<p>1、对每一列进行求和，可以看到输出的是每种食物(100g)的卡路里总和；</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cal = A.sum(axis=<span class="number">0</span>)</span><br><span class="line">print(cal)</span><br><span class="line"><span class="comment">#[  59.   239.   155.4   76.9]</span></span><br></pre></td></tr></table></figure>
+<p>解释一下A.sum(axis = 0)中的参数axis。</p>
+<p>axis用来指明将要进行的运算是沿着哪个轴执行，在numpy中，0轴是垂直的，也就是列，而1轴是水平的，也就是行。</p>
+<p>axis = 0：在竖直方向求和</p>
+<p>axis = 1：在水平方向求和</p>
+<p> 2、分别计算每种食物每种营养成分的百分比，将3 x 4的矩阵除以一个1 x 4的矩阵，得到一个3 x 4的结果矩阵，这个结果矩阵就是我们要求的百分比含量。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">percentage = <span class="number">100</span> * A / cal.reshape(<span class="number">1</span>,<span class="number">4</span>)</span><br><span class="line">print(percentage)</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">[[ 94.91525424   0.           2.83140283  88.42652796]</span></span><br><span class="line"><span class="string"> [  2.03389831  43.51464435  33.46203346  10.40312094]</span></span><br><span class="line"><span class="string"> [  3.05084746  56.48535565  63.70656371   1.17035111]]</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>对于A/cal.reshape(1, 4)指令则调用了numpy中的广播机制。这里使用3×4的矩阵A除以1×4的矩阵cal。技术上来讲，其实并不需要再将矩阵cal.reshape（重塑）成1×4，因为矩阵cal本身已经是1×4了。但是当我们写代码时不确定矩阵维度的时候，通常会对矩阵进行重塑来确保得到我们想要的列向量或行向量。重塑操作reshape是一个常量时间的操作，时间复杂度是O(1), 它的调用代价极低。</p>
+<p><strong>广播能让你代码运行速度更快，能写更少的代码来实现你的目标。</strong></p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">yz_l</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://yoursite.com/2020/08/14/Python%E4%B8%AD%E7%9A%84%E5%B9%BF%E6%92%AD/">http://yoursite.com/2020/08/14/Python%E4%B8%AD%E7%9A%84%E5%B9%BF%E6%92%AD/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%90%B4%E6%81%A9%E8%BE%BE-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">吴恩达-深度学习笔记</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/08/23/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/"><img class="prev-cover" data-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">神经网络编程基础(Basics of Neural Network programming)</div></div></a></div><div class="next-post pull-right"><a href="/2020/07/22/PyInstaller%E6%89%93%E5%8C%85python%E7%A8%8B%E5%BA%8F%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"><img class="next-cover" data-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">PyInstaller打包python程序遇到的问题</div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By yz_l</div><div class="framework-info"><span>Driven </span><a target="_blank" rel="noopener" href="https://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><button id="readmode" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="font_plus" title="Increase Font Size"><i class="fas fa-plus"></i></button><button id="font_minus" title="Decrease Font Size"><i class="fas fa-minus"></i></button><button class="translate_chn_to_cht" id="translateLink" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" title="Setting"><i class="fas fa-cog"></i></button><button id="go-up" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  CommonHTML: {
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "HTML-CSS": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "SVG": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body></html>
