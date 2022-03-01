@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2022-02-27T12:09:16.817Z</updated>
+  <updated>2022-03-01T11:53:15.660Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记一次Mac装windows系统</title>
+    <link href="http://yoursite.com/2022/03/01/%E8%AE%B0%E4%B8%80%E6%AC%A1Mac%E8%A3%85Windows%E7%B3%BB%E7%BB%9F/"/>
+    <id>http://yoursite.com/2022/03/01/%E8%AE%B0%E4%B8%80%E6%AC%A1Mac%E8%A3%85Windows%E7%B3%BB%E7%BB%9F/</id>
+    <published>2022-03-01T10:18:16.000Z</published>
+    <updated>2022-03-01T11:53:15.660Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天帮田老师的Mac装Windows系统<br>笔记本型号是 MacBook Air(13英寸，2014年初)</p><p>首先Mac系统忘记密码，只能重置。<br>根据网上教程。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">　　1、在Mac开机瞬间按住【Command + R】；</span><br><span class="line">　　2、出现苹果logo进度条后，会进入Mac恢复界面；</span><br><span class="line">　　3、在恢复界面工具栏中选择【实用工具】-【终端】；</span><br><span class="line">　　4、进入【终端】界面，输入【resetpassword】回车；</span><br><span class="line">　　5、弹出重置密码界面，选择登录的用户，点击【下一步】；</span><br><span class="line">　　6、重新设置开机密码，重启电脑即可；</span><br></pre></td></tr></table></figure><br>但是这台电脑在重设密码的时候，需要 “输入密码解锁磁盘macintosh HD”，这个问题一直没解决掉。最后采取的方案是直接清空磁盘。 <a href="https://zhuanlan.zhihu.com/p/41629787">重置流程</a> 在Mac恢复界面，使用磁盘工具直接清空。<br>重新安装了Mac系统，不过系统是OS X。版本过低，导致下面一系列问题，而且我也不会更新Mac的系统，Appstore中的macOS Monterey不支持这台电脑，也没有其他系统版本。（这次Mac的使用，让我认识到苹果系统不是想象中的好用，可能也是版本的原因。）<br>刚开始想直接装 Windows10系统，不过这台电脑的BootCamp无法识别 Windows10系统，上网找到问题。问题描述为 “无法创建可引导的USB驱动”。<a href="https://www.zhihu.com/question/39544980">解决方法</a><br>Windows10试了好几个版本，知乎说的win10 1703 march也用了，也是无法识别。最后我用的是直接装Windows7，然后升级Windows10。<br>安装Window7的过程也出现很多问题。进去启动盘后，直接卡死。只有在BootCamp装完启动盘后，自动进去安装系统，才可以使用。<br>还有一个错误是在安装系统的时候，BootCamp勾选了 “安装 Windows7或更高版本”，导致进入 Windows7 系统后无法启动，报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">文件：\Windows\system32\drivers\AppleSSD.sys</span><br><span class="line">状态：0xc0000428</span><br><span class="line">信息：Windows 无法验证此文件的数字签名。</span><br></pre></td></tr></table></figure><br>最后解决方案还是<a href="https://support.apple.com/zh-cn/HT205016">官方的方法</a>，安装官方的步骤进行。<br>系统装完之后还要安装BootCamp驱动。不安装，网卡驱动等都是没有的。<br>安装方法是 <a href="https://www.jb51.net/os/MAC/454632.html">BootCamp驱动安装</a> 中的步骤5。<br>之后 Window7 就安装成功，再从Microsoft官网升级成 Window10 就可以了。<br><strong>以后决定买Mac，一定要慎重考虑。真正有需求或者资金充足再考虑。</strong></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;今天帮田老师的Mac装Windows系统&lt;br&gt;笔记本型号是 MacBook Air(13英寸，2014年初)&lt;/p&gt;
+&lt;p&gt;首先Mac系统忘记密码，只能重置。&lt;br&gt;根据网上教程。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>L1和L2距离</title>
