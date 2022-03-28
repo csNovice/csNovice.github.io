@@ -4,7 +4,14 @@
   <url>
     <loc>http://yoursite.com/2022/03/15/NumPy%E5%9F%BA%E7%A1%80/</loc>
     
-    <lastmod>2022-03-15</lastmod>
+    <lastmod>2022-03-28</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2022/03/28/Pytorch%E6%B8%85%E9%99%A4GPU%E5%AD%98%E5%82%A8/</loc>
+    
+    <lastmod>2022-03-28</lastmod>
     
   </url>
   
@@ -116,7 +123,7 @@
 
   <url>
     <loc>http://yoursite.com/</loc>
-    <lastmod>2022-03-26</lastmod>
+    <lastmod>2022-03-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -124,14 +131,21 @@
   
   <url>
     <loc>http://yoursite.com/tags/Python%E6%89%93%E5%8C%85/</loc>
-    <lastmod>2022-03-26</lastmod>
+    <lastmod>2022-03-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yoursite.com/tags/%E5%90%B4%E6%81%A9%E8%BE%BE-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2022-03-26</lastmod>
+    <lastmod>2022-03-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/tags/Pytorch/</loc>
+    <lastmod>2022-03-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
